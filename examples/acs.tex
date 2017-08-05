@@ -1,0 +1,114 @@
+\documentclass[journal=apchd5,manuscript=article,layout=twocolumn]{achemso}
+
+\setkeys{acs}{articletitle=true}
+\setkeys{acs}{keywords = true}
+
+% apchd5: ACS Phot
+% nalefd: Nano Lett
+% acsodf: ACS Omega
+% jpclcd: JPCL
+% jpccck: JPCC
+
+\usepackage[utf8]{inputenc}% get my name right
+\usepackage[T1]{fontenc}
+
+\usepackage[]{amsmath}
+\usepackage[]{lipsum}
+
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+
+\newcommand{\Dabs}{\ensuremath{\delta_\text{Abs}}}
+\newcommand{\Mloc}{\langle M_{\text{loc}}\rangle}
+\newcommand{\Mlocparallel}{\langle M_{\text{loc}}^\parallel\rangle}
+\newcommand{\Mloclambda}{\langle M_{\text{loc}}(\lambda)\rangle}
+%
+
+\DeclareGraphicsExtensions{%
+    .pdf,.PDF,%
+    .png,.PNG,%
+    .jpg,.jpeg}
+%
+\author{Baptiste Auguié}
+\affiliation{School of Chemical and Physical Sciences\\ 
+             Victoria University of Wellington\\
+            PO Box 600 Wellington, New Zealand}
+\alsoaffiliation{The Dodd-Walls Centre for Quantum and Photonic Technologies}
+\email{baptiste.auguie@vuw.ac.nz}
+
+
+\author{Eric C. Le Ru} 
+\phone{+64-04-463 5233}
+\fax{+64-04-463 5237}
+\email{eric.leru@vuw.ac.nz}
+\affiliation{School of Chemical and Physical Sciences\\ 
+             Victoria University of Wellington\\
+            PO Box 600 Wellington, New Zealand}
+\alsoaffiliation{The Dodd-Walls Centre for Quantum and Photonic Technologies}
+\alsoaffiliation{The MacDiarmid Institute for Advanced Materials and Nanotechnology}
+
+% TEL: +64-04-463 5233 x8987
+% FAX:+64-04-463 5237
+
+% \author{Brendan L. Darby}
+% \author{Matthias Meyer}
+\title{Manuscript title}
+
+
+\abbreviations{IR,NMR,UV}
+\keywords{American Chemical Society, \LaTeX}
+
+
+\begin{document}
+
+\begin{abstract}
+  \lipsum[1-1]
+\end{abstract}
+
+
+\section{Introduction}
+
+\lipsum[2-4]
+
+
+
+
+
+
+
+\begin{acknowledgement}
+
+The authors thank Mats Dahlgren for version one of \textsf{achemso},
+and Donald Arseneau for the code taken from \textsf{cite} to move
+citations after punctuation.
+
+\end{acknowledgement}
+
+
+\begin{suppinfo}
+This will usually read something like: ``Experimental procedures and
+characterization data for all new compounds. The class will
+automatically add a sentence pointing to the information on-line:
+\end{suppinfo}
+
+
+\bibliography{achemso-demo}
+
+\begin{tocentry}
+Some journals require a graphical entry for the Table of Contents.
+This should be laid out ``print ready'' so that the sizing of the
+text is correct.
+
+Inside the \texttt{tocentry} environment, the font used is Helvetica
+8\,pt, as required by \emph{Journal of the American Chemical
+Society}.
+
+The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
+permitted for  \emph{Journal of the American Chemical Society}
+graphical table of content entries. The box will not resize if the
+content is too big: instead it will overflow the edge of the box.
+
+This box and the associated title will always be printed on a
+separate page at the end of the document.
+\end{tocentry}
+
+\end{document}

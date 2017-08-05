@@ -1,0 +1,19 @@
+title: On physics and chemistry
+authors:
+  - name: Lise Meitner
+    affiliation: [Kaiser Wilhelm Institute,
+                University of Berlin,
+                Manne Siegbahn Institute]
+    email: lise.meitner@institution.edu
+  - name: Pierre Curie
+    affiliation: École Normale Supérieure
+    email: pierre.curie@institution.edu
+  - name: Marie Curie
+    affiliation: [University of Paris,
+                 Institut du Radium,
+                 École Normale Supérieure]
+    email: marie.curie@institution.edu
+    fax: 123
+pacs: [123, 456, 789] # https://publishing.aip.org/publishing/pacs
+keywords: [physics, science, everything]
+abbreviations: [UV,IR]
