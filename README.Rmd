@@ -110,4 +110,12 @@ preamble_journal <- list(title = fun_title, authors = fun_authors)
 lapply(preamble_journal, do.call, list(meta=meta))
 ```
 
+## TODO list
+
+- compile a list of TeX templates
+- turn them into glue templates
+- fine-tune the glueing process (line breaks, strange characters, etc.)
+- wrap into a package (cf Rticles)
+- make a Rstudio add-in
+
 

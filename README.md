@@ -119,3 +119,13 @@ Below's a partial example to illustrate the process.
     ## \affiliation{University of Paris}
     ## \affiliation{Institut du Radium}
     ## \affiliation{École Normale Supérieure}
+
+TODO list
+---------
+
+-   compile a list of TeX templates
+-   turn them into glue templates
+-   fine-tune the glueing process (line breaks, strange characters,
+    etc.)
+-   wrap into a package (cf Rticles)
+-   make a Rstudio add-in
