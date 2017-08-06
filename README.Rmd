@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.path = ".")
+knitr::opts_chunk$set(echo = TRUE, fig.path = ".", comment = "")
 ```
 
 ## The problem with LaTeX templates
@@ -99,15 +99,23 @@ library(glue)
 
 meta <- yaml.load_file("_metadata.yaml")
 
+helper_affiliations <- function(a){
+  
+  aff <- sprintf("\\affiliation{%s}", a)
+  
+  if(length(a) == 1) return(aff) else aff[-1] <- gsub("affiliation", "altaffiliation", aff[-1])
+    glue::collapse(aff, "\n")
+}
+
 
 fun_title <- function(meta) glue_data(meta, "\\title{{ {title} }}") 
 fun_authors <- function(meta) lapply(meta[["authors"]], 
                                      glue_data, 
                                      '\\author{{ {name} }}
-                                     { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
-fun_extra <- function(meta) glue_data(meta, "\\abbreviations{{ {collapse(abbreviations,',')} }}\n 
-                                             \\keywords{{ {collapse(keywords,',')} }}") 
-preamble_journal <- list(title = fun_title, authors = fun_authors, extra = fun_extra)
+                                     {helper_affiliations(affiliation)}')
+
+preamble_journal <- list(title = fun_title, authors = fun_authors)
+
 glue::collapse(unlist(lapply(preamble_journal, do.call, list(meta=meta))), sep = "\n")
 ```
 

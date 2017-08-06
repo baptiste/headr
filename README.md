@@ -90,30 +90,36 @@ Below's a partial example to illustrate the process.
 
     meta <- yaml.load_file("_metadata.yaml")
 
+    helper_affiliations <- function(a){
+      
+      aff <- sprintf("\\affiliation{%s}", a)
+      
+      if(length(a) == 1) return(aff) else aff[-1] <- gsub("affiliation", "altaffiliation", aff[-1])
+        glue::collapse(aff, "\n")
+    }
+
 
     fun_title <- function(meta) glue_data(meta, "\\title{{ {title} }}") 
     fun_authors <- function(meta) lapply(meta[["authors"]], 
                                          glue_data, 
                                          '\\author{{ {name} }}
-                                         { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
-    fun_extra <- function(meta) glue_data(meta, "\\abbreviations{{ {collapse(abbreviations,',')} }}\n 
-                                                 \\keywords{{ {collapse(keywords,',')} }}") 
-    preamble_journal <- list(title = fun_title, authors = fun_authors, extra = fun_extra)
+                                         {helper_affiliations(affiliation)}')
+
+    preamble_journal <- list(title = fun_title, authors = fun_authors)
+
     glue::collapse(unlist(lapply(preamble_journal, do.call, list(meta=meta))), sep = "\n")
 
-    ## \title{ On physics and chemistry }
-    ## \author{ Lise Meitner }
-    ## \affiliation{Kaiser Wilhelm Institute}
-    ## \affiliation{University of Berlin}
-    ## \affiliation{Manne Siegbahn Institute}
-    ## \author{ Pierre Curie }
-    ## \affiliation{École Normale Supérieure}
-    ## \author{ Marie Curie }
-    ## \affiliation{University of Paris}
-    ## \affiliation{Institut du Radium}
-    ## \affiliation{École Normale Supérieure}
-    ## \abbreviations{ UV,IR }
-    ##  \keywords{ physics,science,everything }
+    \title{ On physics and chemistry }
+    \author{ Lise Meitner }
+    \affiliation{Kaiser Wilhelm Institute}
+    \altaffiliation{University of Berlin}
+    \altaffiliation{Manne Siegbahn Institute}
+    \author{ Pierre Curie }
+    \affiliation{École Normale Supérieure}
+    \author{ Marie Curie }
+    \affiliation{University of Paris}
+    \altaffiliation{Institut du Radium}
+    \altaffiliation{École Normale Supérieure}
 
 TODO list
 ---------

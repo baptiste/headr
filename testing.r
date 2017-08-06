@@ -19,6 +19,13 @@ fun_authors(meta)
 preamble_journal1 <- list(title = fun_title, authors = fun_authors)
 
 
+affiliations <- function(a=letters[1:3]){
+  if(length(a) == 1) return(sprintf("\\affiliation{%s}", a)) else
+    glue_data(a, 'paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n")')
+}
+
+
+
 fun_title <- function(meta) glue_data(meta, "\\title{{ {title} }}") 
 fun_authors <- function(meta) lapply(meta[["authors"]], 
                                      glue_data, 
@@ -26,6 +33,7 @@ fun_authors <- function(meta) lapply(meta[["authors"]],
                                      { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
 preamble_journal2 <- list(title = fun_title, authors = fun_authors)
 
-lapply(preamble_journal2, do.call, list(meta=meta))
+glue::collapse(unlist(lapply(preamble_journal2, do.call, list(meta=meta))), sep = "\n")
+
 
 
