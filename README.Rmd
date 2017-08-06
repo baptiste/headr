@@ -103,7 +103,7 @@ helper_affiliations <- function(a){
   
   aff <- sprintf("\\affiliation{%s}", a)
   
-  if(length(a) == 1) return(aff) else aff[-1] <- gsub("affiliation", "altaffiliation", aff[-1])
+  if(length(a) == 1) return(aff) else aff[-1] <- gsub("affiliation", "alsoaffiliation", aff[-1])
     glue::collapse(aff, "\n")
 }
 
