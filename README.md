@@ -130,3 +130,9 @@ TODO list
     characters, etc.)
 -   wrap into a package (cf Rticles)
 -   make a Rstudio add-in
+-   figure out where this fits in the rmarkdown + pandoc templates side
+    of things (need to inject a R-processed `$meta-header$` into the
+    template, but before knitting -- somewhat incompatible with a single
+    pass?)
+-   consider alternative languages (Haskell, javascript, TeX seem
+    obvious candidates)
