@@ -100,22 +100,22 @@ Below's a partial example to illustrate the process.
     preamble_journal <- list(title = fun_title, authors = fun_authors)
     lapply(preamble_journal, do.call, list(meta=meta))
 
-    FALSE $title
-    FALSE \title{ On physics and chemistry }
-    FALSE 
-    FALSE $authors
-    FALSE $authors[[1]]
-    FALSE \author{ Lise Meitner }
-    FALSE \affiliation{Kaiser Wilhelm Institute}
-    FALSE \affiliation{University of Berlin}
-    FALSE \affiliation{Manne Siegbahn Institute}
-    FALSE 
-    FALSE $authors[[2]]
-    FALSE \author{ Pierre Curie }
-    FALSE \affiliation{École Normale Supérieure}
-    FALSE 
-    FALSE $authors[[3]]
-    FALSE \author{ Marie Curie }
-    FALSE \affiliation{University of Paris}
-    FALSE \affiliation{Institut du Radium}
-    FALSE \affiliation{École Normale Supérieure}
+    ## $title
+    ## \title{ On physics and chemistry }
+    ## 
+    ## $authors
+    ## $authors[[1]]
+    ## \author{ Lise Meitner }
+    ## \affiliation{Kaiser Wilhelm Institute}
+    ## \affiliation{University of Berlin}
+    ## \affiliation{Manne Siegbahn Institute}
+    ## 
+    ## $authors[[2]]
+    ## \author{ Pierre Curie }
+    ## \affiliation{École Normale Supérieure}
+    ## 
+    ## $authors[[3]]
+    ## \author{ Marie Curie }
+    ## \affiliation{University of Paris}
+    ## \affiliation{Institut du Radium}
+    ## \affiliation{École Normale Supérieure}
