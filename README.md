@@ -1,7 +1,7 @@
 The problem with LaTeX templates
 --------------------------------
 
-Practically every journal supplying a TeX template defines its own
+Practically every journal supplying a LaTeX template defines its own
 custom macros for author affiliations and other metadata, with very
 little consistency from one publisher to another. This renders the
 process of re-submitting a manuscript to a new journal really
@@ -80,7 +80,7 @@ We'll store the metadata in an external file, in `yaml` format.
 
 This file can contain more information than needed, and is common to all
 versions of the manuscript, regardless of the publisher's template. From
-these data, we will populate the TeX macros relevant to a given TeX
+these data, we will populate the TeX macros relevant to a given LaTeX
 template as needed.
 
 Below's a partial example to illustrate the process.
@@ -123,7 +123,7 @@ Below's a partial example to illustrate the process.
 TODO list
 ---------
 
--   compile a list of TeX templates
+-   compile a list of LaTeX templates
 -   turn them into glue templates
 -   fine-tune the glueing process (line breaks, strange characters,
     etc.)
