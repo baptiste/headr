@@ -77,3 +77,45 @@ We'll store the metadata in an external file, in `yaml` format.
     pacs: [123, 456, 789] # https://publishing.aip.org/publishing/pacs
     ociscodes: [123, 456, 789] # https://www.osapublishing.org/submit/ocis
     preprint: APS/123-ABC
+
+This file can contain more information than needed, and is common to all
+versions of the manuscript, regardless of the publisher's template. From
+these data, we will populate the TeX macros relevant to a given TeX
+template as needed.
+
+Below's a partial example to illustrate the process.
+
+    library(yaml)
+    library(glue)
+
+    meta <- yaml.load_file("_metadata.yaml")
+
+
+    fun_title <- function(meta) glue_data(meta, "\\title{{ {title} }}") 
+    fun_authors <- function(meta) lapply(meta[["authors"]], 
+                                         glue_data, 
+                                         '\\author{{ {name} }}
+                                         { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
+
+    preamble_journal <- list(title = fun_title, authors = fun_authors)
+    lapply(preamble_journal, do.call, list(meta=meta))
+
+    FALSE $title
+    FALSE \title{ On physics and chemistry }
+    FALSE 
+    FALSE $authors
+    FALSE $authors[[1]]
+    FALSE \author{ Lise Meitner }
+    FALSE \affiliation{Kaiser Wilhelm Institute}
+    FALSE \affiliation{University of Berlin}
+    FALSE \affiliation{Manne Siegbahn Institute}
+    FALSE 
+    FALSE $authors[[2]]
+    FALSE \author{ Pierre Curie }
+    FALSE \affiliation{École Normale Supérieure}
+    FALSE 
+    FALSE $authors[[3]]
+    FALSE \author{ Marie Curie }
+    FALSE \affiliation{University of Paris}
+    FALSE \affiliation{Institut du Radium}
+    FALSE \affiliation{École Normale Supérieure}
