@@ -27,3 +27,5 @@ fun_authors <- function(meta) lapply(meta[["authors"]],
 preamble_journal2 <- list(title = fun_title, authors = fun_authors)
 
 lapply(preamble_journal2, do.call, list(meta=meta))
+
+

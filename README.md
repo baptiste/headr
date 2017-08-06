@@ -96,36 +96,31 @@ Below's a partial example to illustrate the process.
                                          glue_data, 
                                          '\\author{{ {name} }}
                                          { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
+    fun_extra <- function(meta) glue_data(meta, "\\abbreviations{{ {collapse(abbreviations,',')} }}\n 
+                                                 \\keywords{{ {collapse(keywords,',')} }}") 
+    preamble_journal <- list(title = fun_title, authors = fun_authors, extra = fun_extra)
+    glue::collapse(unlist(lapply(preamble_journal, do.call, list(meta=meta))), sep = "\n")
 
-    preamble_journal <- list(title = fun_title, authors = fun_authors)
-    lapply(preamble_journal, do.call, list(meta=meta))
-
-    ## $title
     ## \title{ On physics and chemistry }
-    ## 
-    ## $authors
-    ## $authors[[1]]
     ## \author{ Lise Meitner }
     ## \affiliation{Kaiser Wilhelm Institute}
     ## \affiliation{University of Berlin}
     ## \affiliation{Manne Siegbahn Institute}
-    ## 
-    ## $authors[[2]]
     ## \author{ Pierre Curie }
     ## \affiliation{École Normale Supérieure}
-    ## 
-    ## $authors[[3]]
     ## \author{ Marie Curie }
     ## \affiliation{University of Paris}
     ## \affiliation{Institut du Radium}
     ## \affiliation{École Normale Supérieure}
+    ## \abbreviations{ UV,IR }
+    ##  \keywords{ physics,science,everything }
 
 TODO list
 ---------
 
 -   compile a list of LaTeX templates
 -   turn them into glue templates
--   fine-tune the glueing process (line breaks, strange characters,
-    etc.)
+-   fine-tune the glueing process (line breaks, missing values, strange
+    characters, etc.)
 -   wrap into a package (cf Rticles)
 -   make a Rstudio add-in

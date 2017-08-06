@@ -105,16 +105,17 @@ fun_authors <- function(meta) lapply(meta[["authors"]],
                                      glue_data, 
                                      '\\author{{ {name} }}
                                      { paste(sprintf("\\\\affiliation{%s}", affiliation), collapse="\\n") }')
-
-preamble_journal <- list(title = fun_title, authors = fun_authors)
-lapply(preamble_journal, do.call, list(meta=meta))
+fun_extra <- function(meta) glue_data(meta, "\\abbreviations{{ {collapse(abbreviations,',')} }}\n 
+                                             \\keywords{{ {collapse(keywords,',')} }}") 
+preamble_journal <- list(title = fun_title, authors = fun_authors, extra = fun_extra)
+glue::collapse(unlist(lapply(preamble_journal, do.call, list(meta=meta))), sep = "\n")
 ```
 
 ## TODO list
 
 - compile a list of LaTeX templates
 - turn them into glue templates
-- fine-tune the glueing process (line breaks, strange characters, etc.)
+- fine-tune the glueing process (line breaks, missing values, strange characters, etc.)
 - wrap into a package (cf Rticles)
 - make a Rstudio add-in
 
