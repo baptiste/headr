@@ -121,6 +121,7 @@ glue::collapse(unlist(lapply(preamble_journal, do.call, list(meta=meta))), sep =
 
 ## TODO list
 
+- use better fake names, phones etc. with charlatan package https://github.com/ropensci/charlatan
 - compile a list of LaTeX templates
 - turn them into glue templates
 - fine-tune the glueing process (line breaks, missing values, strange characters, etc.)
