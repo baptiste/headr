@@ -52,6 +52,32 @@ Practically every journal supplying a LaTeX template defines its own custom macr
 \keywords{American Chemical Society}
 ```
 
+The pandoc way
+--------------
+
+pandoc provides a way to populate latex templates with custom metadata stored in a human-readable yaml format. Unfortunately, the template itself is coded in tex – not the easiest language to work with.
+
+```
+$if(abstract)$
+\abstract{%
+$abstract$
+}
+$endif$
+
+$body$
+
+$for(author)$
+\address{%
+$author.name$\\
+$author.affiliation$\\
+$for(author.address)$$author.address$$sep$\\ $endfor$\\
+}
+$if(author.email)$$author.email$$endif$
+
+$endfor$
+```
+
+
 ## A standardised, human-readable format
 
 We'll store the metadata in an external file, in `yaml` format.
@@ -65,7 +91,7 @@ This file can contain more information than needed, and is common to all version
 
 Below's an example to illustrate the process.
 
-```{r test, warning=FALSE,  message=FALSE}
+```{r test, warning=FALSE,  message=FALSE, echo=FALSE}
 knitr::include_graphics("preview.png")
 ```
 
