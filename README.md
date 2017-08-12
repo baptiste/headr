@@ -42,6 +42,31 @@ cumbersome. Consider the following two examples:
     \abbreviations{IR,NMR,UV}
     \keywords{American Chemical Society}
 
+The pandoc way
+--------------
+
+pandoc provides a way to populate latex templates with custom metadata stored in a human-readable yaml format. Unfortunately, the template itself is coded in tex – not the easiest language to work with.
+
+```
+$if(abstract)$
+\abstract{%
+$abstract$
+}
+$endif$
+
+$body$
+
+$for(author)$
+\address{%
+$author.name$\\
+$author.affiliation$\\
+$for(author.address)$$author.address$$sep$\\ $endfor$\\
+}
+$if(author.email)$$author.email$$endif$
+
+$endfor$
+```
+
 A standardised, human-readable format
 -------------------------------------
 
