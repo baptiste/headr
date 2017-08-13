@@ -9,6 +9,6 @@
 ##' @import yaml
 ##' @export
 hdr_metadata <- function(meta = yaml::yaml.load_file("_metadata.yaml"), template = template_journal_A()){
-  glue::collapse(unlist(lapply(template, do.call, list(meta=meta))), sep = "\n")
+  glue::collapse(unlist(lapply(template, do.call, list(meta=meta))), sep = "\\n")
 }
 

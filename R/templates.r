@@ -22,8 +22,10 @@ template_journal_A <- function(){
   
   fun_title <- function(meta) glue_data(meta, "\\\\title{<<title>>}", .open = "<<", .close = ">>")
   fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
-  
-  list(title = fun_title,  authors = fun_authors)
+  fun_extra <- function(meta) glue::glue_data(meta, "\n\\\\abbreviations{<<glue::collapse(abbreviations,',')>>}\n
+                                              \\\\keywords{<<glue::collapse(keywords,',')>>}", .open = "<<", .close = ">>")
+
+  list(title = fun_title,  authors = fun_authors, extra = fun_extra)
   
 }
 
