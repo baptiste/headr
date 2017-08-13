@@ -1,4 +1,4 @@
 pdf_document:
-  keep_tex: no
+  keep_tex: yes
   latex_engine: xelatex
   template: _template.tex

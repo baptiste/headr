@@ -3,5 +3,6 @@
 export(hdr_abstract)
 export(hdr_metadata)
 export(template_journal_A)
+export(template_journal_B)
 import(glue)
 import(yaml)
