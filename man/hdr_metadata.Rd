@@ -5,7 +5,7 @@
 \title{hdr_metadata}
 \usage{
 hdr_metadata(meta = yaml::yaml.load_file("_metadata.yaml"),
-  template = template_journal_A)
+  template = template_journal_A())
 }
 \arguments{
 \item{meta}{metadata content}
