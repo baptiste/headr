@@ -1,0 +1,36 @@
+title: "Here and there again: harnessing non-locality in invisibility cloaks"
+
+authors:
+  - name: Bilbo Baggins
+    affiliation: ["Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire",
+                  "Rivendell, West of the Misty Mountains, Eriador"]
+    email: bilbo.baggins@hobbit.arda
+    note: Currently on leave in Mordor
+    corresponding: false
+
+  - name: Lord Elrond
+    affiliation: "Rivendell, West of the Misty Mountains, Eriador"
+    email: elrond@noldor.arda
+    corresponding: true
+
+  - name: Lady Galadriel
+    affiliation: ["Caras Galadhon, The Naith of Lórien, Lothlórien"]
+    email: galadriel@noldor.arda
+    corresponding: true
+
+  - name: Gandalf The Grey
+    affiliation: ["Middle-earth, Arda"]
+    email: mithrandir@maiar.arda
+    corresponding: true
+
+
+collaboration: The Fellowship of the Ring
+thanks: Frodo Baggins, Gollum
+keywords: [ring, invisibility, cloaking]
+abbreviations: [LOTR]
+pacs: [123, 456, 789] # https://publishing.aip.org/publishing/pacs
+ociscodes: [123, 456, 789] # https://www.osapublishing.org/submit/ocis
+preprint: APS/123-ABC
+
+abstract: >
+    All that is gold does not glitter. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
