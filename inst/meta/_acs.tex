@@ -1,0 +1,79 @@
+\documentclass[journal=apchd5,manuscript=article,layout=twocolumn]{achemso}
+
+\setkeys{acs}{articletitle=true}
+\setkeys{acs}{keywords = true}
+
+% apchd5: ACS Phot
+% nalefd: Nano Lett
+% acsodf: ACS Omega
+% jpclcd: JPCL
+% jpccck: JPCC
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[]{amsmath}
+\usepackage[]{lipsum}
+
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+
+\DeclareGraphicsExtensions{%
+    .pdf,.PDF,%
+    .png,.PNG,%
+    .jpg,.jpeg}
+
+
+\begin{document}
+
+\begin{abstract}
+  \lipsum[1-1]
+\end{abstract}
+
+
+\section{Introduction}
+
+\lipsum[2-4]
+
+
+
+
+
+
+
+\begin{acknowledgement}
+
+The authors thank Mats Dahlgren for version one of \textsf{achemso},
+and Donald Arseneau for the code taken from \textsf{cite} to move
+citations after punctuation.
+
+\end{acknowledgement}
+
+
+\begin{suppinfo}
+This will usually read something like: ``Experimental procedures and
+characterization data for all new compounds. The class will
+automatically add a sentence pointing to the information on-line:
+\end{suppinfo}
+
+
+\bibliography{achemso-demo}
+
+\begin{tocentry}
+Some journals require a graphical entry for the Table of Contents.
+This should be laid out ``print ready'' so that the sizing of the
+text is correct.
+
+Inside the \texttt{tocentry} environment, the font used is Helvetica
+8\,pt, as required by \emph{Journal of the American Chemical
+Society}.
+
+The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
+permitted for  \emph{Journal of the American Chemical Society}
+graphical table of content entries. The box will not resize if the
+content is too big: instead it will overflow the edge of the box.
+
+This box and the associated title will always be printed on a
+separate page at the end of the document.
+\end{tocentry}
+
+\end{document}

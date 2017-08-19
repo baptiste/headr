@@ -2,7 +2,8 @@
 
 export(hdr_abstract)
 export(hdr_metadata)
-export(template_journal_A)
-export(template_journal_B)
+export(tpl_acs)
+export(tpl_aps)
+export(tpl_osa)
 import(glue)
 import(yaml)

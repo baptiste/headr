@@ -1,23 +1,34 @@
-
-# \title{Manuscript title}
-# 
-# \author{Author One}
-# \affiliation{First address}
-# \alsoaffiliation{Second address}
-# \email{email@my-email.com}
-# 
-# \author{Author Two} 
-# \phone{+123456789}
-# \fax{+123456789}
-# \email{email@my-email.com}
-# \affiliation{First address}
-# \alsoaffiliation{Second address}
-# \alsoaffiliation{Third address}
-# 
-# \abbreviations{IR,NMR,UV}
-# \keywords{American Chemical Society}
 ##' @export
-template_journal_A <- function(){
+tpl_aps <- function(){
+  
+  ##  helper functions
+  
+  helper_author <- function(x) {
+    
+    # format name
+    name <- glue::glue_data(.x = x, "\\\\author{<<name>>}", .open = "<<", .close = ">>")
+    
+    # format affiliation(s)
+    aff <- glue::glue_data(.x = x, "\\\\affiliation{<<affiliation>>}", .open = "<<", .close = ">>")
+
+    # email (if corresponding author)
+    email <- if(x$corresponding) glue::glue_data(x, "\\\\email{<<email>>}", .open = "<<", .close = ">>") else ""
+    
+    glue::collapse(c(name, aff, email), "\n")
+  }
+  
+  fun_title <- function(meta) glue_data(meta, "\\\\title{<<title>>}", .open = "<<", .close = ">>")
+  fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
+  fun_extra <- function(meta) glue::glue_data(meta, "\n\\\\pacs{<<glue::collapse(pacs,',')>>}\n
+                                              \\\\keywords{<<glue::collapse(keywords,',')>>}", .open = "<<", .close = ">>")
+  fun_date <- function(meta) glue_data(meta, "\\\\date{<<date>>}", .open = "<<", .close = ">>")
+  
+  list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
+  
+}
+
+##' @export
+tpl_acs <- function(){
   
   ##  helper functions
   
@@ -40,26 +51,15 @@ template_journal_A <- function(){
   fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
   fun_extra <- function(meta) glue::glue_data(meta, "\n\\\\abbreviations{<<glue::collapse(abbreviations,',')>>}\n
                                               \\\\keywords{<<glue::collapse(keywords,',')>>}", .open = "<<", .close = ">>")
+  fun_date <- function(meta) glue_data(meta, "\\\\date{<<date>>}", .open = "<<", .close = ">>")
   
-  list(title = fun_title,  authors = fun_authors, extra = fun_extra)
+  list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
   
 }
 
 
-# \title{Manuscript Title}
-# 
-# \author[1,2,3]{Author One}
-# \author[2,*]{Author Two}
-# 
-# \affil[1]{First address}
-# \affil[2]{Second address}
-# \affil[3]{Third address}
-# 
-# \affil[*]{Corresponding author: email@my-email.com}
-# \dates{Compiled \today}
-# \ociscodes{(140.3490) Lasers, distributed feedback; (060.2420) Fibers.}
 ##' @export
-template_journal_B <- function(){
+tpl_osa <- function(){
   
   ##  helper functions
   
@@ -83,11 +83,12 @@ template_journal_B <- function(){
   }
   
   fun_title <- function(meta) glue_data(meta, "\\\\title{<<title>>}", .open = "<<", .close = ">>")
-
-  fun_extra <- function(meta) glue::glue_data(meta, "\n\\\\abbreviations{<<glue::collapse(abbreviations,',')>>}\n
-                                              \\\\keywords{<<glue::collapse(keywords,',')>>}", .open = "<<", .close = ">>")
   
-  list(title = fun_title,  authors = fun_authors, extra = fun_extra)
+  fun_date <- function(meta) glue_data(meta, "\\\\dates{<<date>>}", .open = "<<", .close = ">>")
+  
+  # fun_extra <- function(meta) glue::glue_data(meta, "\\\\keywords{<<glue::collapse(keywords,',')>>}", .open = "<<", .close = ">>")
+
+  list(title = fun_title,  authors = fun_authors, date = fun_date)
   
 }
 
