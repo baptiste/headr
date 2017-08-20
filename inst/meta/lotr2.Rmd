@@ -1,0 +1,12 @@
+---
+metadata: "`r headr::hdr_metadata(meta=yaml::yaml.load_file('_lotr.yaml'), template = headr::tpl_aps())`"
+abstract: "`r headr::hdr_abstract(meta=yaml::yaml.load_file('_lotr.yaml'))`"
+output: 
+  pdf_document:
+    keep_tex: yes
+    latex_engine: pdflatex
+    template: _aps.tex
+---
+
+\lipsum[2-6]
+
