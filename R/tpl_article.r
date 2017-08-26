@@ -14,14 +14,14 @@ tpl_article <- function(){
     namelist <- lapply(meta$authors, "[[", "name")
     emaillist <- lapply(meta$authors, "[[", "email")
     corresponding <- vapply(meta$authors, "[[", TRUE, "corresponding")
-    namelist[corresponding] <- Map(f = function(n,e) sprintf("%s\\thanks{%s}", n, e), 
+    namelist[corresponding] <- Map(f = function(n,e) sprintf("%s\\\\thanks{%s}", n, e), 
                                    n=namelist[corresponding], e = emaillist[corresponding])
     
     names <- glue::collapse(Map(f = function(id, n) 
       glue::glue("\\\\author[{id}]{{{n}}}"),
       id=ids, n=namelist), sep = "\n")
     
-    glue::collapse(c(names, affiliations), "\n")
+    glue::collapse(c(names, affiliations), sep="\n")
     
   }
   

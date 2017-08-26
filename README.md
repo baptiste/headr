@@ -190,8 +190,8 @@ The package defines 4 templates, shown below.
     %
     \\title{On physics and chemistry}
     %
-    \\author[1,2,3]{Lise Meitner\thanks{lise.meitner@institution.edu}}
-    \\author[4]{Pierre Curie\thanks{pierre.curie@institution.edu}}
+    \\author[1,2,3]{Lise Meitner\\thanks{lise.meitner@institution.edu}}
+    \\author[4]{Pierre Curie\\thanks{pierre.curie@institution.edu}}
     \\author[5,6,4]{Marie Curie}
     \\affil[1]{Kaiser Wilhelm Institute}
     \\affil[2]{University of Berlin}
