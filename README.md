@@ -72,43 +72,42 @@ A standardised, human-readable format
 
 We'll store the metadata in an external file, in `yaml` format.
 
-    title: "Here and there again: harnessing non-locality in invisibility cloaks"
+    title: On physics and chemistry
     date: "\\\\today"
 
     authors:
-      - name: Bilbo Baggins
-        affiliation: ["Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire",
-                      "Rivendell, West of the Misty Mountains, Eriador"]
-        email: bilbo.baggins@hobbit.arda
-        note: Currently on leave in Mordor
+      - name: Lise Meitner
+        affiliation: [Kaiser Wilhelm Institute,
+                    University of Berlin,
+                    Manne Siegbahn Institute]
+        email: lise.meitner@institution.edu
+        corresponding: true
+
+      - name: Pierre Curie
+        affiliation: École Normale Supérieure
+        email: pierre.curie@institution.edu
+        homepage: https://en.wikipedia.org/wiki/Pierre_Curie
+        corresponding: true
+
+      - name: Marie Curie
+        affiliation: [University of Paris,
+                     Institut du Radium,
+                     École Normale Supérieure]
+        email: marie.curie@institution.edu
         corresponding: false
+        homepage: https://en.wikipedia.org/wiki/Marie_Curie
+        phone: +123456
+        fax: 123456
 
-      - name: Lord Elrond
-        affiliation: "Rivendell, West of the Misty Mountains, Eriador"
-        email: elrond@noldor.arda
-        corresponding: true
-
-      - name: Lady Galadriel
-        affiliation: ["Caras Galadhon, The Naith of Lórien, Lothlórien"]
-        email: galadriel@noldor.arda
-        corresponding: true
-
-      - name: Gandalf The Grey
-        affiliation: ["Middle-earth, Arda"]
-        email: mithrandir@maiar.arda
-        corresponding: true
-
-
-    collaboration: The Fellowship of the Ring
-    thanks: Frodo Baggins, Gollum
-    keywords: [ring, invisibility, cloaking]
-    abbreviations: [LOTR]
+    collaboration: Wikipedia
+    thanks: Friends and colleagues
+    keywords: [physics, science, everything]
+    abbreviations: [UV,IR]
     pacs: [123, 456, 789] # https://publishing.aip.org/publishing/pacs
     ociscodes: [123, 456, 789] # https://www.osapublishing.org/submit/ocis
     preprint: APS/123-ABC
 
-    abstract: >
-        All that is gold does not glitter. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 This file can contain more information than needed, and is common to all
 versions of the manuscript, regardless of the publisher's template. From
@@ -122,82 +121,84 @@ The package defines 4 templates, shown below.
 
     glue::collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
 
-    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    \\title{On physics and chemistry}
     %
-    \\author{Bilbo Baggins}
-    \\affiliation{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
-    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
+    \\author{Lise Meitner}
+    \\affiliation{Kaiser Wilhelm Institute}
+    \\affiliation{University of Berlin}
+    \\affiliation{Manne Siegbahn Institute}
+    \\email{lise.meitner@institution.edu}
+    \\author{Pierre Curie}
+    \\affiliation{École Normale Supérieure}
+    \\email{pierre.curie@institution.edu}
+    \\author{Marie Curie}
+    \\affiliation{University of Paris}
+    \\affiliation{Institut du Radium}
+    \\affiliation{École Normale Supérieure}
 
-    \\author{Lord Elrond}
-    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
-    \\email{elrond@noldor.arda}
-    \\author{Lady Galadriel}
-    \\affiliation{Caras Galadhon, The Naith of Lórien, Lothlórien}
-    \\email{galadriel@noldor.arda}
-    \\author{Gandalf The Grey}
-    \\affiliation{Middle-earth, Arda}
-    \\email{mithrandir@maiar.arda}
     %
     \\date{\\today}
     %
     \\pacs{123,456,789}
-    \\keywords{ring,invisibility,cloaking}
+    \\keywords{physics,science,everything}
 
     glue::collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
 
-    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    \\title{On physics and chemistry}
     %
-    \\author{Bilbo Baggins}
-    \\affiliation{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
-    \\alsoaffiliation{Rivendell, West of the Misty Mountains, Eriador}
+    \\author{Lise Meitner}
+    \\affiliation{Kaiser Wilhelm Institute}
+    \\alsoaffiliation{University of Berlin}
+    \\alsoaffiliation{Manne Siegbahn Institute}
+    \\email{lise.meitner@institution.edu}
+    \\author{Pierre Curie}
+    \\affiliation{École Normale Supérieure}
+    \\email{pierre.curie@institution.edu}
+    \\author{Marie Curie}
+    \\affiliation{University of Paris}
+    \\alsoaffiliation{Institut du Radium}
+    \\alsoaffiliation{École Normale Supérieure}
 
-    \\author{Lord Elrond}
-    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
-    \\email{elrond@noldor.arda}
-    \\author{Lady Galadriel}
-    \\affiliation{Caras Galadhon, The Naith of Lórien, Lothlórien}
-    \\email{galadriel@noldor.arda}
-    \\author{Gandalf The Grey}
-    \\affiliation{Middle-earth, Arda}
-    \\email{mithrandir@maiar.arda}
     %
     \\date{\\today}
     %
-    \\abbreviations{LOTR}
-    \\keywords{ring,invisibility,cloaking}
+    \\abbreviations{UV,IR}
+    \\keywords{physics,science,everything}
 
     glue::collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
 
-    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    \\title{On physics and chemistry}
     %
-    \\author[1,2]{Bilbo Baggins}
-    \\author[2]{Lord Elrond}
-    \\author[3]{Lady Galadriel}
-    \\author[4]{Gandalf The Grey}
-    \\affil[1]{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
-    \\affil[2]{Rivendell, West of the Misty Mountains, Eriador}
-    \\affil[3]{Caras Galadhon, The Naith of Lórien, Lothlórien}
-    \\affil[4]{Middle-earth, Arda}
+    \\author[1,2,3]{Lise Meitner}
+    \\author[4]{Pierre Curie}
+    \\author[5,6,4]{Marie Curie}
+    \\affil[1]{Kaiser Wilhelm Institute}
+    \\affil[2]{University of Berlin}
+    \\affil[3]{Manne Siegbahn Institute}
+    \\affil[4]{École Normale Supérieure}
+    \\affil[5]{University of Paris}
+    \\affil[6]{Institut du Radium}
     %
     \\dates{\\today}
     %
     \\pacs{123,456,789}
-    \\keywords{ring,invisibility,cloaking}
+    \\keywords{physics,science,everything}
 
     glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
 
     \usepackage{authblk}
     %
-    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    \\title{On physics and chemistry}
     %
-    \\author[1,2]{Bilbo Baggins}
-    \\author[2]{Lord Elrond\thanks{elrond@noldor.arda}}
-    \\author[3]{Lady Galadriel\thanks{galadriel@noldor.arda}}
-    \\author[4]{Gandalf The Grey\thanks{mithrandir@maiar.arda}}
-    \\affil[1]{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
-    \\affil[2]{Rivendell, West of the Misty Mountains, Eriador}
-    \\affil[3]{Caras Galadhon, The Naith of Lórien, Lothlórien}
-    \\affil[4]{Middle-earth, Arda}
+    \\author[1,2,3]{Lise Meitner\thanks{lise.meitner@institution.edu}}
+    \\author[4]{Pierre Curie\thanks{pierre.curie@institution.edu}}
+    \\author[5,6,4]{Marie Curie}
+    \\affil[1]{Kaiser Wilhelm Institute}
+    \\affil[2]{University of Berlin}
+    \\affil[3]{Manne Siegbahn Institute}
+    \\affil[4]{École Normale Supérieure}
+    \\affil[5]{University of Paris}
+    \\affil[6]{Institut du Radium}
     %
     \\date{\\today}
 
