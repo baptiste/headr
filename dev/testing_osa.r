@@ -29,7 +29,6 @@ fun_authors <- function(meta){
   
 }
 
-
 fun_title <- function(meta) helper_glue(meta, "\\\\title{<<title>>}")
 fun_date <- function(meta) helper_glue(meta, "\\\\dates{<<date>>}")
 fun_extra <- function(meta) helper_glue(meta, "\n\\\\pacs{<<glue::collapse(pacs,',')>>}\n\\\\keywords{<<glue::collapse(keywords,',')>>}")

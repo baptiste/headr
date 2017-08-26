@@ -2,8 +2,10 @@
 
 export(hdr_abstract)
 export(hdr_metadata)
+export(helper_glue)
 export(tpl_acs)
 export(tpl_aps)
+export(tpl_article)
 export(tpl_osa)
 import(glue)
 import(yaml)
