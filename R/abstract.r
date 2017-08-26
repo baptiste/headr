@@ -8,5 +8,5 @@
 ##' @import yaml
 ##' @export
 hdr_abstract <- function(meta = yaml::yaml.load_file("_metadata.yaml")){
-  glue::glue_data(.x = meta, "<<abstract>>", .open = "<<", .close = ">>")
+  helper_glue(.x = meta, "<<abstract>>")
 }
