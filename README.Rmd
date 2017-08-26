@@ -84,7 +84,7 @@ We'll store the metadata in an external file, in `yaml` format.
 
 
 ```{bash md, warning=FALSE,  message=FALSE, echo=FALSE, results='markup'}
-cat inst/example/_metadata.yaml
+cat inst/meta/_lotr.yaml
 ```
 
 This file can contain more information than needed, and is common to all versions of the manuscript, regardless of the publisher's template. From these data, we will populate the TeX macros relevant to a given LaTeX template as needed.
@@ -94,6 +94,26 @@ Below's an example to illustrate the process.
 ```{r test, warning=FALSE,  message=FALSE, echo=FALSE}
 knitr::include_graphics("preview.png")
 ```
+
+## Pre-defined templates
+
+The package defines 4 templates, shown below.
+
+```{r load, echo=FALSE,message=FALSE}
+library(headr)
+meta <- yaml::yaml.load_file("inst/meta/_lotr.yaml")
+```
+
+```{r tpl,message=FALSE}
+glue::collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
+
+glue::collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
+
+glue::collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
+
+glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
+```
+
 
 ## TODO list
 

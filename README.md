@@ -72,41 +72,43 @@ A standardised, human-readable format
 
 We'll store the metadata in an external file, in `yaml` format.
 
-    title: On physics and chemistry
+    title: "Here and there again: harnessing non-locality in invisibility cloaks"
+    date: "\\\\today"
 
     authors:
-      - name: Lise Meitner
-        affiliation: [Kaiser Wilhelm Institute,
-                    University of Berlin,
-                    Manne Siegbahn Institute]
-        email: lise.meitner@institution.edu
-        corresponding: true
-
-      - name: Pierre Curie
-        affiliation: École Normale Supérieure
-        email: pierre.curie@institution.edu
-        homepage: https://en.wikipedia.org/wiki/Pierre_Curie
-        corresponding: true
-
-      - name: Marie Curie
-        affiliation: [University of Paris,
-                     Institut du Radium,
-                     École Normale Supérieure]
-        email: marie.curie@institution.edu
+      - name: Bilbo Baggins
+        affiliation: ["Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire",
+                      "Rivendell, West of the Misty Mountains, Eriador"]
+        email: bilbo.baggins@hobbit.arda
+        note: Currently on leave in Mordor
         corresponding: false
-        homepage: https://en.wikipedia.org/wiki/Marie_Curie
-        phone: +123456
-        fax: 123456
 
-    collaboration: Wikipedia
-    thanks: Friends and colleagues
-    keywords: [physics, science, everything]
-    abbreviations: [UV,IR]
+      - name: Lord Elrond
+        affiliation: "Rivendell, West of the Misty Mountains, Eriador"
+        email: elrond@noldor.arda
+        corresponding: true
+
+      - name: Lady Galadriel
+        affiliation: ["Caras Galadhon, The Naith of Lórien, Lothlórien"]
+        email: galadriel@noldor.arda
+        corresponding: true
+
+      - name: Gandalf The Grey
+        affiliation: ["Middle-earth, Arda"]
+        email: mithrandir@maiar.arda
+        corresponding: true
+
+
+    collaboration: The Fellowship of the Ring
+    thanks: Frodo Baggins, Gollum
+    keywords: [ring, invisibility, cloaking]
+    abbreviations: [LOTR]
     pacs: [123, 456, 789] # https://publishing.aip.org/publishing/pacs
     ociscodes: [123, 456, 789] # https://www.osapublishing.org/submit/ocis
     preprint: APS/123-ABC
 
-    abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    abstract: >
+        All that is gold does not glitter. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 This file can contain more information than needed, and is common to all
 versions of the manuscript, regardless of the publisher's template. From
@@ -116,6 +118,92 @@ template as needed.
 Below's an example to illustrate the process.
 
 <img src="preview.png" width="1200" />
+
+Pre-defined templates
+---------------------
+
+The package defines 4 templates, shown below.
+
+    glue::collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
+
+    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    %
+    \\author{Bilbo Baggins}
+    \\affiliation{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
+    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
+
+    \\author{Lord Elrond}
+    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
+    \\email{elrond@noldor.arda}
+    \\author{Lady Galadriel}
+    \\affiliation{Caras Galadhon, The Naith of Lórien, Lothlórien}
+    \\email{galadriel@noldor.arda}
+    \\author{Gandalf The Grey}
+    \\affiliation{Middle-earth, Arda}
+    \\email{mithrandir@maiar.arda}
+    %
+    \\date{\\today}
+    %
+    \\pacs{123,456,789}
+    \\keywords{ring,invisibility,cloaking}
+
+    glue::collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
+
+    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    %
+    \\author{Bilbo Baggins}
+    \\affiliation{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
+    \\alsoaffiliation{Rivendell, West of the Misty Mountains, Eriador}
+
+    \\author{Lord Elrond}
+    \\affiliation{Rivendell, West of the Misty Mountains, Eriador}
+    \\email{elrond@noldor.arda}
+    \\author{Lady Galadriel}
+    \\affiliation{Caras Galadhon, The Naith of Lórien, Lothlórien}
+    \\email{galadriel@noldor.arda}
+    \\author{Gandalf The Grey}
+    \\affiliation{Middle-earth, Arda}
+    \\email{mithrandir@maiar.arda}
+    %
+    \\date{\\today}
+    %
+    \\abbreviations{LOTR}
+    \\keywords{ring,invisibility,cloaking}
+
+    glue::collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
+
+    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    %
+    \\author[1,2]{Bilbo Baggins}
+    \\author[2]{Lord Elrond}
+    \\author[3]{Lady Galadriel}
+    \\author[4]{Gandalf The Grey}
+    \\affil[1]{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
+    \\affil[2]{Rivendell, West of the Misty Mountains, Eriador}
+    \\affil[3]{Caras Galadhon, The Naith of Lórien, Lothlórien}
+    \\affil[4]{Middle-earth, Arda}
+    %
+    \\dates{\\today}
+    %
+    \\pacs{123,456,789}
+    \\keywords{ring,invisibility,cloaking}
+
+    glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
+
+    \usepackage{authblk}
+    %
+    \\title{Here and there again: harnessing non-locality in invisibility cloaks}
+    %
+    \\author[1,2]{Bilbo Baggins}
+    \\author[2]{Lord Elrond\thanks{elrond@noldor.arda}}
+    \\author[3]{Lady Galadriel\thanks{galadriel@noldor.arda}}
+    \\author[4]{Gandalf The Grey\thanks{mithrandir@maiar.arda}}
+    \\affil[1]{Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire}
+    \\affil[2]{Rivendell, West of the Misty Mountains, Eriador}
+    \\affil[3]{Caras Galadhon, The Naith of Lórien, Lothlórien}
+    \\affil[4]{Middle-earth, Arda}
+    %
+    \\date{\\today}
 
 TODO list
 ---------
