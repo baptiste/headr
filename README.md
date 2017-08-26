@@ -115,10 +115,6 @@ versions of the manuscript, regardless of the publisher's template. From
 these data, we will populate the TeX macros relevant to a given LaTeX
 template as needed.
 
-Below's an example to illustrate the process.
-
-<img src="preview.png" width="1200" />
-
 Pre-defined templates
 ---------------------
 
