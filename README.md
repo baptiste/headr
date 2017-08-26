@@ -186,7 +186,7 @@ The package defines 4 templates, shown below.
 
     glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
 
-    \usepackage{authblk}
+    \\usepackage{authblk}
     %
     \\title{On physics and chemistry}
     %

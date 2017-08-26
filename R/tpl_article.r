@@ -27,7 +27,7 @@ tpl_article <- function(){
   
   fun_title <- function(meta) helper_glue(meta, "\\\\title{<<title>>}")
   fun_date <- function(meta) helper_glue(meta, "\\\\date{<<date>>}")
-  fun_extra <- function(meta) {"\\usepackage{authblk}"}
+  fun_extra <- function(meta) {"\\\\usepackage{authblk}"}
   
   list(extra = fun_extra, title = fun_title,  authors = fun_authors, date = fun_date)
   
