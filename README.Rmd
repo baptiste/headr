@@ -11,6 +11,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE, fig.path = ".", comment = "")
 ```
 
+
+```{r prev, echo=FALSE}
+knitr::include_graphics('preview.gif')
+```
+
 ## The problem with LaTeX templates
 
 Practically every journal supplying a LaTeX template defines its own custom macros for author affiliations and other metadata, with very little consistency from one publisher to another. This renders the process of re-submitting a manuscript to a new journal really cumbersome. Consider the following two examples:

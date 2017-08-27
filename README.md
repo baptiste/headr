@@ -1,3 +1,5 @@
+![](preview.gif)
+
 The problem with LaTeX templates
 --------------------------------
 
@@ -73,18 +75,20 @@ A standardised, human-readable format
 We'll store the metadata in an external file, in `yaml` format.
 
     title: On physics and chemistry
-    date: "\\\\today"
+    date: "\\today"
 
     authors:
       - name: Lise Meitner
         affiliation: [Kaiser Wilhelm Institute,
                     University of Berlin,
                     Manne Siegbahn Institute]
+        collaboration: Wikipedia
         email: lise.meitner@institution.edu
         corresponding: true
 
       - name: Pierre Curie
         affiliation: École Normale Supérieure
+        collaboration: Wikipedia
         email: pierre.curie@institution.edu
         homepage: https://en.wikipedia.org/wiki/Pierre_Curie
         corresponding: true
@@ -93,13 +97,13 @@ We'll store the metadata in an external file, in `yaml` format.
         affiliation: [University of Paris,
                      Institut du Radium,
                      École Normale Supérieure]
+        collaboration: Wikipedia
         email: marie.curie@institution.edu
         corresponding: false
         homepage: https://en.wikipedia.org/wiki/Marie_Curie
         phone: +123456
         fax: 123456
 
-    collaboration: Wikipedia
     thanks: Friends and colleagues
     keywords: [physics, science, everything]
     abbreviations: [UV,IR]
@@ -121,86 +125,85 @@ The package defines 4 templates, shown below.
 
     glue::collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
 
-    \\title{On physics and chemistry}
+    \title{On physics and chemistry}
     %
-    \\author{Lise Meitner}
-    \\affiliation{Kaiser Wilhelm Institute}
-    \\affiliation{University of Berlin}
-    \\affiliation{Manne Siegbahn Institute}
-    \\email{lise.meitner@institution.edu}
-    \\author{Pierre Curie}
-    \\affiliation{École Normale Supérieure}
-    \\email{pierre.curie@institution.edu}
-    \\author{Marie Curie}
-    \\affiliation{University of Paris}
-    \\affiliation{Institut du Radium}
-    \\affiliation{École Normale Supérieure}
+    \author{Lise Meitner}
+    \affiliation{Kaiser Wilhelm Institute}
+    \affiliation{University of Berlin}
+    \affiliation{Manne Siegbahn Institute}
+    \email{lise.meitner@institution.edu}
+    \author{Pierre Curie}
+    \affiliation{École Normale Supérieure}
+    \email{pierre.curie@institution.edu}
+    \author{Marie Curie}
+    \affiliation{University of Paris}
+    \affiliation{Institut du Radium}
+    \affiliation{École Normale Supérieure}
 
     %
-    \\date{\\today}
+    \date{\today}
     %
-    \\pacs{123,456,789}
-    \\keywords{physics,science,everything}
+    \pacs{123,456,789}
+    \keywords{physics,science,everything}
 
     glue::collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
 
-    \\title{On physics and chemistry}
+    \title{On physics and chemistry}
     %
-    \\author{Lise Meitner}
-    \\affiliation{Kaiser Wilhelm Institute}
-    \\alsoaffiliation{University of Berlin}
-    \\alsoaffiliation{Manne Siegbahn Institute}
-    \\email{lise.meitner@institution.edu}
-    \\author{Pierre Curie}
-    \\affiliation{École Normale Supérieure}
-    \\email{pierre.curie@institution.edu}
-    \\author{Marie Curie}
-    \\affiliation{University of Paris}
-    \\alsoaffiliation{Institut du Radium}
-    \\alsoaffiliation{École Normale Supérieure}
+    \author{Lise Meitner}
+    \affiliation{Kaiser Wilhelm Institute}
+    \alsoaffiliation{University of Berlin}
+    \alsoaffiliation{Manne Siegbahn Institute}
+    \email{lise.meitner@institution.edu}
+    \author{Pierre Curie}
+    \affiliation{École Normale Supérieure}
+    \email{pierre.curie@institution.edu}
+    \author{Marie Curie}
+    \affiliation{University of Paris}
+    \alsoaffiliation{Institut du Radium}
+    \alsoaffiliation{École Normale Supérieure}
 
     %
-    \\date{\\today}
+    \date{\today}
     %
-    \\abbreviations{UV,IR}
-    \\keywords{physics,science,everything}
+    \abbreviations{UV,IR}
+    \keywords{physics,science,everything}
 
     glue::collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
 
-    \\title{On physics and chemistry}
+    \title{On physics and chemistry}
     %
-    \\author[1,2,3]{Lise Meitner}
-    \\author[4]{Pierre Curie}
-    \\author[5,6,4]{Marie Curie}
-    \\affil[1]{Kaiser Wilhelm Institute}
-    \\affil[2]{University of Berlin}
-    \\affil[3]{Manne Siegbahn Institute}
-    \\affil[4]{École Normale Supérieure}
-    \\affil[5]{University of Paris}
-    \\affil[6]{Institut du Radium}
+    \author[1,2,3]{Lise Meitner}
+    \author[4]{Pierre Curie}
+    \author[5,6,4]{Marie Curie}
+    \affil[1]{Kaiser Wilhelm Institute}
+    \affil[2]{University of Berlin}
+    \affil[3]{Manne Siegbahn Institute}
+    \affil[4]{École Normale Supérieure}
+    \affil[5]{University of Paris}
+    \affil[6]{Institut du Radium}
     %
-    \\dates{\\today}
+    \dates{\today}
     %
-    \\pacs{123,456,789}
-    \\keywords{physics,science,everything}
+    \ociscodes{123,456,789}
 
     glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
 
-    \\usepackage{authblk}
+    \usepackage{authblk}
     %
-    \\title{On physics and chemistry}
+    \title{On physics and chemistry}
     %
-    \\author[1,2,3]{Lise Meitner\\thanks{lise.meitner@institution.edu}}
-    \\author[4]{Pierre Curie\\thanks{pierre.curie@institution.edu}}
-    \\author[5,6,4]{Marie Curie}
-    \\affil[1]{Kaiser Wilhelm Institute}
-    \\affil[2]{University of Berlin}
-    \\affil[3]{Manne Siegbahn Institute}
-    \\affil[4]{École Normale Supérieure}
-    \\affil[5]{University of Paris}
-    \\affil[6]{Institut du Radium}
+    \author[1,2,3]{Lise Meitner\thanks{lise.meitner@institution.edu}}
+    \author[4]{Pierre Curie\thanks{pierre.curie@institution.edu}}
+    \author[5,6,4]{Marie Curie}
+    \affil[1]{Kaiser Wilhelm Institute}
+    \affil[2]{University of Berlin}
+    \affil[3]{Manne Siegbahn Institute}
+    \affil[4]{École Normale Supérieure}
+    \affil[5]{University of Paris}
+    \affil[6]{Institut du Radium}
     %
-    \\date{\\today}
+    \date{\today}
 
 TODO list
 ---------
