@@ -1,16 +1,18 @@
 title: On physics and chemistry
-date: "\\\\today"
+date: "\\today"
 
 authors:
   - name: Lise Meitner
     affiliation: [Kaiser Wilhelm Institute,
                 University of Berlin,
                 Manne Siegbahn Institute]
+    collaboration: Wikipedia
     email: lise.meitner@institution.edu
     corresponding: true
 
   - name: Pierre Curie
     affiliation: École Normale Supérieure
+    collaboration: Wikipedia
     email: pierre.curie@institution.edu
     homepage: https://en.wikipedia.org/wiki/Pierre_Curie
     corresponding: true
@@ -19,13 +21,13 @@ authors:
     affiliation: [University of Paris,
                  Institut du Radium,
                  École Normale Supérieure]
+    collaboration: Wikipedia
     email: marie.curie@institution.edu
     corresponding: false
     homepage: https://en.wikipedia.org/wiki/Marie_Curie
     phone: +123456
     fax: 123456
 
-collaboration: Wikipedia
 thanks: Friends and colleagues
 keywords: [physics, science, everything]
 abbreviations: [UV,IR]

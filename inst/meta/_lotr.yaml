@@ -1,16 +1,18 @@
 title: "Here and there again: harnessing non-locality in invisibility cloaks"
-date: "\\\\today"
+date: "\\today"
 
 authors:
   - name: Bilbo Baggins
     affiliation: ["Bag End, Bagshot Row, Private Bag, Hobbiton, the Shire",
                   "Rivendell, West of the Misty Mountains, Eriador"]
+    collaboration: The Fellowship of the Ring
     email: bilbo.baggins@hobbit.arda
     note: Currently on leave in Mordor
     corresponding: false
 
   - name: Lord Elrond
     affiliation: "Rivendell, West of the Misty Mountains, Eriador"
+    collaboration: The Fellowship of the Ring
     email: elrond@noldor.arda
     corresponding: true
 
@@ -21,11 +23,10 @@ authors:
 
   - name: Gandalf The Grey
     affiliation: ["Middle-earth, Arda"]
+    collaboration: The Fellowship of the Ring
     email: mithrandir@maiar.arda
     corresponding: true
 
-
-collaboration: The Fellowship of the Ring
 thanks: Frodo Baggins, Gollum
 keywords: [ring, invisibility, cloaking]
 abbreviations: [LOTR]
