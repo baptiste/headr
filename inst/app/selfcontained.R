@@ -129,7 +129,7 @@ tpl_osa <- function(){
   
 }
 
-
+tpl_osa_optica <- tpl_osa_josab <- tpl_osa_ol <- tpl_osa
 
 
 

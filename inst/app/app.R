@@ -9,7 +9,7 @@ escapeBS <- function (string)
   gsub("\\\\", "\\\\\\\\\\", string)
 }
 
-meta <- readLines("_curie.yaml")
+meta <- readLines("_lotr.yaml")
 default <- glue::collapse(meta, sep="\n")
 # tpl_acs_jpcl <- tpl_acs_nanoletters <- tpl_acs_photonics <- 
 #   tpl_acs_nano <- tpl_acs_omega
@@ -25,7 +25,10 @@ choices <- c("acs_jpcl",
      "aps_pre",  
      "aps_prl",
      "aps_prx",
-     "osa", 
+     "osa_optica", 
+     "osa_josab", 
+     "osa_ol", 
+     "iop", 
      "article")
 
 shinyApp(
