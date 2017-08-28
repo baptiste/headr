@@ -133,5 +133,30 @@ tpl_osa_optica <- tpl_osa_josab <- tpl_osa_ol <- tpl_osa
 
 
 
+tpl_iop <- function(){
+  
+  helper_author <- function(x) {
+    
+    # format name
+    name <- helper_glue(.x = x, "\\author{<<name>>}")
+    
+    # format affiliation(s)
+    aff <- helper_glue(.x = x, "\\address{<<affiliation>>}")
+    
+    info <- c(name, aff)
+    # email (if corresponding author)
+    if(x$corresponding) info <- c(info, helper_glue(x, "\\ead{<<email>>}"))
+    
+    glue::collapse(info, "\n")
+  }
+  
+  fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
+  fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
+  fun_extra <- function(meta) helper_glue(meta, "\n\\pacs{<<glue::collapse(pacs,',')>>}")
+  fun_date <- function(meta) helper_glue(meta, "\\date{<<date>>}")
+  
+  list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
+  
+}
 
 
