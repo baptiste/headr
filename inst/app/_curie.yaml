@@ -15,6 +15,7 @@ authors:
     collaboration: Wikipedia
     email: pierre.curie@institution.edu
     homepage: https://en.wikipedia.org/wiki/Pierre_Curie
+    note: Contributed equally
     corresponding: true
 
   - name: Marie Curie
@@ -24,6 +25,7 @@ authors:
     collaboration: Wikipedia
     email: marie.curie@institution.edu
     corresponding: false
+    note: Contributed equally
     homepage: https://en.wikipedia.org/wiki/Marie_Curie
     phone: +123456
     fax: 123456

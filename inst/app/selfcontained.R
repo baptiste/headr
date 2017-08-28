@@ -13,10 +13,14 @@ tpl_acs <- function(){
     aff <- helper_glue(.x = x, "\\affiliation{<<affiliation>>}")
     if(length(x) > 1) aff[-1] <- gsub("affiliation", "alsoaffiliation", aff[-1])
     
+    info <- c(name, aff)
     # email (if corresponding author)
-    email <- if(x$corresponding) helper_glue(x, "\\email{<<email>>}") else ""
+    if(x$corresponding) info <- c(info, helper_glue(x, "\\email{<<email>>}"))
+    if(!is.null(x$phone)) info <- c(info, helper_glue(x, "\\phone{<<phone>>}"))
+    if(!is.null(x$fax)) info <- c(info, helper_glue(x, "\\fax{<<fax>>}"))
+    if(!is.null(x$note)) info <- c(info, helper_glue(x, "\\altaffiliation{<<note>>}"))
     
-    glue::collapse(c(name, aff, email), "\n")
+    glue::collapse(info, "\n")
   }
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
@@ -27,6 +31,9 @@ tpl_acs <- function(){
   list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
   
 }
+
+tpl_acs_jpcl <- tpl_acs_nanoletters <- tpl_acs_photonics <- 
+  tpl_acs_nano <- tpl_acs_omega <- tpl_acs 
 
 ##' @export
 tpl_aps <- function(){
