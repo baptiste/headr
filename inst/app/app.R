@@ -4,6 +4,11 @@ library(glue)
 
 source("selfcontained.R")
 
+escapeBS <- function (string) 
+{
+  gsub("\\\\", "\\\\\\\\\\", string)
+}
+
 meta <- readLines("_curie.yaml")
 default <- glue::collapse(meta, sep="\n")
 # tpl_acs_jpcl <- tpl_acs_nanoletters <- tpl_acs_photonics <- 
@@ -14,7 +19,12 @@ choices <- c("acs_jpcl",
      "acs_nanoletters",
      "acs_omega", 
      "acs_photonics", 
-     "aps", 
+     "aip", 
+     "aps_pra", 
+     "aps_prb", 
+     "aps_pre",  
+     "aps_prl",
+     "aps_prx",
      "osa", 
      "article")
 
@@ -57,14 +67,16 @@ shinyApp(
     
     
     output$downloadTemplate <- downloadHandler(
-      filename = function() { paste0("frag_", choices[as.numeric(input$tpl)],'.tex') },
+      filename = function() { paste0("manuscript_", choices[as.numeric(input$tpl)],'.tex') },
       content = function(file) {
         
         meta <- yaml::yaml.load(string = input$yaml)
         
         tpl <- match.fun(paste0("tpl_", choices[as.numeric(input$tpl)]))
         s <- glue::collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
-        writeLines(s, file)
+        template <- readLines(paste0("templates/", choices[as.numeric(input$tpl)],".tex"))
+        writeLines(gsub("\\$metadata\\$", escapeBS(s), collapse(template, sep = "\n")), file)
+        # writeLines(s, file)
       }
     )
   }

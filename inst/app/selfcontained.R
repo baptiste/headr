@@ -43,9 +43,15 @@ tpl_aps <- function(){
     name <- helper_glue(.x = x, "\\author{<<name>>}")
     # format affiliation(s)
     aff <- helper_glue(.x = x, "\\affiliation{<<affiliation>>}")
+    
+    info <- c(name, aff)
     # email (if corresponding author)
-    email <- if(x$corresponding) helper_glue(x, "\\email{<<email>>}") else ""
-    glue::collapse(c(name, aff, email), "\n")
+    if(x$corresponding) info <- c(info, helper_glue(x, "\\email{<<email>>}"))
+    if(!is.null(x$homepage)) info <- c(info, helper_glue(x, "\\homepage{<<homepage>>}"))
+    if(!is.null(x$collaboration)) info <- c(info, helper_glue(x, "\\collaboration{<<collaboration>>}"))
+    if(!is.null(x$note)) info <- c(info, helper_glue(x, "\\altaffiliation{<<note>>}"))
+    
+    glue::collapse(info, "\n")
   }
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
@@ -57,7 +63,7 @@ tpl_aps <- function(){
   
 }
 
-
+tpl_aps_pra <- tpl_aps_prb <- tpl_aps_pre <- tpl_aps_prl <- tpl_aps_prx <- tpl_aps
 ##' @export
 tpl_article <- function(){
   

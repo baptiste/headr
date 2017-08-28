@@ -1,6 +1,16 @@
-\documentclass[journal=jpclcd, manuscript=article]{achemso}
-\usepackage[T1]{fontenc}       % Use modern font encodings
+\documentclass[journal=jpclcd, manuscript=article, layout=twocolumn]{achemso}
 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[]{amsmath}
+\usepackage[]{lipsum}
+
+\DeclareGraphicsExtensions{%
+    .pdf,.PDF,%
+    .png,.PNG,%
+    .jpg,.jpeg}
+    
 % macros
 \newcommand*\mycommand[1]{\texttt{\emph{#1}}}
 
@@ -11,6 +21,8 @@ $metadata$
 \begin{abstract}
 $abstract$
 \end{abstract}
+
+\lipsum[4-6]
 
 $body$
 
