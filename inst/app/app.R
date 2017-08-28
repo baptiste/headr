@@ -35,9 +35,9 @@ shinyApp(
   #UI
   ui = fluidPage(fluidRow(
       column(6,
-             textAreaInput("yaml", "Input metadata", value = default, 
+             textAreaInput("yaml", "Input metadata (yaml format)", value = default, 
                            width=600, rows = length(meta), resize = "vertical")),
-      column(6, selectInput("tpl", label = h5("TeX fragment"), 
+      column(6, selectInput("tpl", label = NULL, 
                             choices = setNames(seq_along(choices), choices), selected = 8),
              verbatimTextOutput("tex"),
              downloadButton('downloadFragment', 'Download fragment'),
