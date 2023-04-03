@@ -5,11 +5,11 @@ tpl_article <- function(){
     
     aff <- lapply(meta$authors, "[[", "affiliation")
     unique_aff <- unique(unlist(aff))
-    affiliations <- glue::collapse(Map(f = function(id, a) 
+    affiliations <- glue::glue_collapse(Map(f = function(id, a) 
       glue::glue("\\affil[{id}]{{{a}}}"),
       id=seq_along(unique_aff), a=unique_aff), sep = "\n")
     
-    ids <- lapply(meta$authors, function(a) glue::collapse(match(a$affiliation, unique_aff), ","))
+    ids <- lapply(meta$authors, function(a) glue::glue_collapse(match(a$affiliation, unique_aff), ","))
     
     namelist <- lapply(meta$authors, "[[", "name")
     emaillist <- lapply(meta$authors, "[[", "email")
@@ -17,11 +17,11 @@ tpl_article <- function(){
     namelist[corresponding] <- Map(f = function(n,e) sprintf("%s\\thanks{%s}", n, e), 
                                    n=namelist[corresponding], e = emaillist[corresponding])
     
-    names <- glue::collapse(Map(f = function(id, n) 
+    names <- glue::glue_collapse(Map(f = function(id, n) 
       glue::glue("\\author[{id}]{{{n}}}"),
       id=ids, n=namelist), sep = "\n")
     
-    glue::collapse(c(names, affiliations), sep="\n")
+    glue::glue_collapse(c(names, affiliations), sep="\n")
     
   }
   

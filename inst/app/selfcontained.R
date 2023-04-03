@@ -20,12 +20,12 @@ tpl_acs <- function(){
     if(!is.null(x$fax)) info <- c(info, helper_glue(x, "\\fax{<<fax>>}"))
     if(!is.null(x$note)) info <- c(info, helper_glue(x, "\\altaffiliation{<<note>>}"))
     
-    glue::collapse(info, "\n")
+    glue::glue_collapse(info, "\n")
   }
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
-  fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
-  fun_extra <- function(meta) helper_glue(meta, "\n\\abbreviations{<<glue::collapse(abbreviations,',')>>}\n\\keywords{<<glue::collapse(keywords,',')>>}")
+  fun_authors <- function(meta) glue::glue_collapse(unlist(lapply(meta$authors, helper_author)), "\n")
+  fun_extra <- function(meta) helper_glue(meta, "\n\\abbreviations{<<glue::glue_collapse(abbreviations,',')>>}\n\\keywords{<<glue::glue_collapse(keywords,',')>>}")
   fun_date <- function(meta) helper_glue(meta, "\\date{<<date>>}")
   
   list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
@@ -51,12 +51,12 @@ tpl_aps <- function(){
     if(!is.null(x$collaboration)) info <- c(info, helper_glue(x, "\\collaboration{<<collaboration>>}"))
     if(!is.null(x$note)) info <- c(info, helper_glue(x, "\\altaffiliation{<<note>>}"))
     
-    glue::collapse(info, "\n")
+    glue::glue_collapse(info, "\n")
   }
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
-  fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
-  fun_extra <- function(meta) helper_glue(meta, "\n\\pacs{<<glue::collapse(pacs,',')>>}\n\\keywords{<<glue::collapse(keywords,',')>>}")
+  fun_authors <- function(meta) glue::glue_collapse(unlist(lapply(meta$authors, helper_author)), "\n")
+  fun_extra <- function(meta) helper_glue(meta, "\n\\pacs{<<glue::glue_collapse(pacs,',')>>}\n\\keywords{<<glue::glue_collapse(keywords,',')>>}")
   fun_date <- function(meta) helper_glue(meta, "\\date{<<date>>}")
   
   list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
@@ -71,11 +71,11 @@ tpl_article <- function(){
     
     aff <- lapply(meta$authors, "[[", "affiliation")
     unique_aff <- unique(unlist(aff))
-    affiliations <- glue::collapse(Map(f = function(id, a) 
+    affiliations <- glue::glue_collapse(Map(f = function(id, a) 
       glue::glue("\\affil[{id}]{{{a}}}"),
       id=seq_along(unique_aff), a=unique_aff), sep = "\n")
     
-    ids <- lapply(meta$authors, function(a) glue::collapse(match(a$affiliation, unique_aff), ","))
+    ids <- lapply(meta$authors, function(a) glue::glue_collapse(match(a$affiliation, unique_aff), ","))
     
     namelist <- lapply(meta$authors, "[[", "name")
     emaillist <- lapply(meta$authors, "[[", "email")
@@ -83,11 +83,11 @@ tpl_article <- function(){
     namelist[corresponding] <- Map(f = function(n,e) sprintf("%s\\thanks{%s}", n, e), 
                                    n=namelist[corresponding], e = emaillist[corresponding])
     
-    names <- glue::collapse(Map(f = function(id, n) 
+    names <- glue::glue_collapse(Map(f = function(id, n) 
       glue::glue("\\author[{id}]{{{n}}}"),
       id=ids, n=namelist), sep = "\n")
     
-    glue::collapse(c(names, affiliations), sep="\n")
+    glue::glue_collapse(c(names, affiliations), sep="\n")
     
   }
   
@@ -106,24 +106,24 @@ tpl_osa <- function(){
     
     aff <- lapply(meta$authors, "[[", "affiliation")
     unique_aff <- unique(unlist(aff))
-    affiliations <- glue::collapse(Map(f = function(id, a) 
+    affiliations <- glue::glue_collapse(Map(f = function(id, a) 
       glue::glue("\\affil[{id}]{{{a}}}"),
       id=seq_along(unique_aff), a=unique_aff), sep = "\n")
     
-    ids <- lapply(meta$authors, function(a) glue::collapse(match(a$affiliation, unique_aff), ","))
+    ids <- lapply(meta$authors, function(a) glue::glue_collapse(match(a$affiliation, unique_aff), ","))
     
-    names <- glue::collapse(Map(f = function(id, n) 
+    names <- glue::glue_collapse(Map(f = function(id, n) 
       glue::glue("\\author[{id}]{{{n}}}"),
       id=ids, n=lapply(meta$authors, "[[", "name")), sep = "\n")
     
-    glue::collapse(c(names, affiliations), "\n")
+    glue::glue_collapse(c(names, affiliations), "\n")
     
   }
   
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
   fun_date <- function(meta) helper_glue(meta, "\\dates{<<date>>}")
-  fun_extra <- function(meta) helper_glue(meta, "\n\\ociscodes{<<glue::collapse(ociscodes,',')>>}")
+  fun_extra <- function(meta) helper_glue(meta, "\n\\ociscodes{<<glue::glue_collapse(ociscodes,',')>>}")
   
   list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)
   
@@ -147,12 +147,12 @@ tpl_iop <- function(){
     # email (if corresponding author)
     if(x$corresponding) info <- c(info, helper_glue(x, "\\ead{<<email>>}"))
     
-    glue::collapse(info, "\n")
+    glue::glue_collapse(info, "\n")
   }
   
   fun_title <- function(meta) helper_glue(meta, "\\title{<<title>>}")
-  fun_authors <- function(meta) glue::collapse(unlist(lapply(meta$authors, helper_author)), "\n")
-  fun_extra <- function(meta) helper_glue(meta, "\n\\pacs{<<glue::collapse(pacs,',')>>}")
+  fun_authors <- function(meta) glue::glue_collapse(unlist(lapply(meta$authors, helper_author)), "\n")
+  fun_extra <- function(meta) helper_glue(meta, "\n\\pacs{<<glue::glue_collapse(pacs,',')>>}")
   fun_date <- function(meta) helper_glue(meta, "\\date{<<date>>}")
   
   list(title = fun_title,  authors = fun_authors, date = fun_date, extra = fun_extra)

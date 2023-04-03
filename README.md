@@ -123,7 +123,7 @@ Pre-defined templates
 
 The package defines 4 templates, shown below.
 
-    glue::collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
+    glue::glue_collapse(purrr::invoke_map_chr(tpl_aps(), meta=meta), sep = "\n%\n")
 
     \title{On physics and chemistry}
     %
@@ -146,7 +146,7 @@ The package defines 4 templates, shown below.
     \pacs{123,456,789}
     \keywords{physics,science,everything}
 
-    glue::collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
+    glue::glue_collapse(purrr::invoke_map_chr(tpl_acs(), meta=meta), sep = "\n%\n")
 
     \title{On physics and chemistry}
     %
@@ -169,7 +169,7 @@ The package defines 4 templates, shown below.
     \abbreviations{UV,IR}
     \keywords{physics,science,everything}
 
-    glue::collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
+    glue::glue_collapse(purrr::invoke_map_chr(tpl_osa(), meta=meta), sep = "\n%\n")
 
     \title{On physics and chemistry}
     %
@@ -187,7 +187,7 @@ The package defines 4 templates, shown below.
     %
     \ociscodes{123,456,789}
 
-    glue::collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
+    glue::glue_collapse(purrr::invoke_map_chr(tpl_article(), meta=meta), sep = "\n%\n")
 
     \usepackage{authblk}
     %

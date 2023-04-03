@@ -1,10 +1,13 @@
 name: headr
 title: headr
+username:
 account: baptiste
 server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
 appId: 207773
-bundleId: 957146
+bundleId: 7039752
 url: https://baptiste.shinyapps.io/headr/
-when: 1503915263.63239
+when: 1680463950.37325
+lastSyncTime: 1680463950.37325
 asMultiple: FALSE
 asStatic: FALSE

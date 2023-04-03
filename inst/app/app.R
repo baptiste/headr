@@ -10,7 +10,7 @@ escapeBS <- function (string)
 }
 
 meta <- readLines("_lotr.yaml")
-default <- glue::collapse(meta, sep="\n")
+default <- glue::glue_collapse(meta, sep="\n")
 # tpl_acs_jpcl <- tpl_acs_nanoletters <- tpl_acs_photonics <- 
 #   tpl_acs_nano <- tpl_acs_omega
 
@@ -19,7 +19,6 @@ choices <- c("acs_jpcl",
      "acs_nanoletters",
      "acs_omega", 
      "acs_photonics", 
-     "aip", 
      "aps_pra", 
      "aps_prb", 
      "aps_pre",  
@@ -51,7 +50,7 @@ shinyApp(
       meta <- yaml::yaml.load(string = input$yaml)
       
       tpl <- match.fun(paste0("tpl_", choices[as.numeric(input$tpl)]))
-      s <- glue::collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
+      s <- glue::glue_collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
       
       s
     })
@@ -63,7 +62,7 @@ shinyApp(
         meta <- yaml::yaml.load(string = input$yaml)
         
         tpl <- match.fun(paste0("tpl_", choices[as.numeric(input$tpl)]))
-        s <- glue::collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
+        s <- glue::glue_collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
         writeLines(s, file)
       }
     )
@@ -76,9 +75,9 @@ shinyApp(
         meta <- yaml::yaml.load(string = input$yaml)
         
         tpl <- match.fun(paste0("tpl_", choices[as.numeric(input$tpl)]))
-        s <- glue::collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
+        s <- glue::glue_collapse(purrr::invoke_map_chr(tpl(), meta=meta), sep = "\n%\n")
         template <- readLines(paste0("templates/", choices[as.numeric(input$tpl)],".tex"))
-        writeLines(gsub("\\$metadata\\$", escapeBS(s), collapse(template, sep = "\n")), file)
+        writeLines(gsub("\\$metadata\\$", escapeBS(s), glue_collapse(template, sep = "\n")), file)
         # writeLines(s, file)
       }
     )

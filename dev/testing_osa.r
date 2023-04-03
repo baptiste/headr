@@ -15,23 +15,23 @@ fun_authors <- function(meta){
   
   aff <- lapply(meta$authors, "[[", "affiliation")
   unique_aff <- unique(unlist(aff))
-  affiliations <- glue::collapse(Map(f = function(id, a) 
+  affiliations <- glue::glue_collapse(Map(f = function(id, a) 
     glue::glue("\\\\affil[{id}]{{{a}}}"),
     id=seq_along(unique_aff), a=unique_aff), sep = "\n")
   
-  ids <- lapply(meta$authors, function(a) glue::collapse(match(a$affiliation, unique_aff), ","))
+  ids <- lapply(meta$authors, function(a) glue::glue_collapse(match(a$affiliation, unique_aff), ","))
   
-  names <- glue::collapse(Map(f = function(id, n) 
+  names <- glue::glue_collapse(Map(f = function(id, n) 
     glue::glue("\\\\author[{id}]{{{n}}}"),
     id=ids, n=lapply(meta$authors, "[[", "name")), sep = "\n")
   
-  glue::collapse(c(names, affiliations), "\n")
+  glue::glue_collapse(c(names, affiliations), "\n")
   
 }
 
 fun_title <- function(meta) helper_glue(meta, "\\\\title{<<title>>}")
 fun_date <- function(meta) helper_glue(meta, "\\\\dates{<<date>>}")
-fun_extra <- function(meta) helper_glue(meta, "\n\\\\pacs{<<glue::collapse(pacs,',')>>}\n\\\\keywords{<<glue::collapse(keywords,',')>>}")
+fun_extra <- function(meta) helper_glue(meta, "\n\\\\pacs{<<glue::glue_collapse(pacs,',')>>}\n\\\\keywords{<<glue::glue_collapse(keywords,',')>>}")
 
 
 fun_title(meta)

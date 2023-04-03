@@ -13,11 +13,11 @@ combs <- crossing(t = tl, m = tm)
 process <- function(t, m){
   fun <- match.fun(paste0("tpl_", t))
   meta <- yaml::yaml.load_file(paste0("../inst/meta/_",m,".yaml")) 
-  s <- glue::collapse(purrr::invoke_map_chr(fun(), meta=meta), sep = "\n%\n")
+  s <- glue::glue_collapse(purrr::invoke_map_chr(fun(), meta=meta), sep = "\n%\n")
   frag <- paste0("_",t,"_",m,"_frag.tex")
   cat(s, file = frag)
   
-  tf <- glue::collapse(readLines(paste0("../inst/meta/_",t,".tex")), sep="\n")
+  tf <- glue::glue_collapse(readLines(paste0("../inst/meta/_",t,".tex")), sep="\n")
   newtext <- gsub("\\$metadata\\$", paste0("\\\\input{",frag,"}"), tf)
   newtext <- gsub("\\$body\\$", "\\\\lipsum[2-6]", newtext)
   newtext <- gsub("\\$abstract\\$", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

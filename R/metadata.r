@@ -9,6 +9,6 @@
 ##' @import yaml
 ##' @export
 hdr_metadata <- function(meta = yaml::yaml.load_file("_metadata.yaml"), template = tpl_aps()){
-  glue::collapse(unlist(lapply(template, do.call, list(meta=meta))), sep = "\\n")
+  glue::glue_collapse(unlist(lapply(template, do.call, list(meta=meta))), sep = "\\n")
 }
 
